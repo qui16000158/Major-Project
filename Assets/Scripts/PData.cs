@@ -6,6 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class PData
 {
+    public Stats stats;
+
     public float posX, posY, posZ;
     public Vector3 Position {
         get
