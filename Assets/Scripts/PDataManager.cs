@@ -22,16 +22,6 @@ public class PDataManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-
-        PData data = new PData();
-        data.stats = new Stats();
-        data.stats.level = 5;
-
-        Save(data);
-
-        PData loadedData = Load();
-
-        Debug.Log(loadedData.stats.level);
     }
 
     // This will load a player's data from disk, and return it

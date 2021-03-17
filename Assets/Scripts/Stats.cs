@@ -13,8 +13,8 @@ public class Stats
     public float expMultiplier = 1.1f;
 
     // These must be initialized when the entity is spawned
-    public float currentHealth = 0;
-    public float currentStamina = 0;
+    public float currentHealth = 100.0f;
+    public float currentStamina = 40.0f;
 
     public float defaultHealth = 100.0f;
     public float defaultStamina = 40.0f;
@@ -36,5 +36,35 @@ public class Stats
         {
             return defaultStamina * Mathf.Pow(multiplier, level);
         }
+    }
+
+    // This will return the EXP required to reach the next level
+    public float LevelFromEXP
+    {
+        get
+        {
+            return defaultEXP * Mathf.Pow(expMultiplier, level);
+        }
+    }
+
+    public void LevelUp()
+    {
+        // Check if the object is able to level up
+        if(EXP > LevelFromEXP)
+        {
+            // Increase the object's level
+            level++;
+            // Reset the object's EXP
+            EXP = 0;
+
+            // Increase the current stats to their new max value
+            Initialize();
+        }
+    }
+
+    public void Initialize()
+    {
+        currentHealth = MaxHealth;
+        currentStamina = MaxStamina;
     }
 }
