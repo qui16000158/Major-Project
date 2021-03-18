@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4036575128489482566}
   - component: {fileID: 4036575128489482565}
   - component: {fileID: 4036575128489482564}
-  - component: {fileID: 4036575128489482587}
+  - component: {fileID: -9019247414718187868}
+  - component: {fileID: -8985935522728983910}
+  - component: {fileID: 6963629756286338279}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -97,7 +99,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
---- !u!114 &4036575128489482587
+--- !u!61 &-9019247414718187868
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036575128489482586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0666667, y: 0.93333334}
+    newSize: {x: 1.0666667, y: 0.93333334}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0666667, y: 0.93333334}
+  m_EdgeRadius: 0
+--- !u!114 &-8985935522728983910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,7 +134,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4036575128489482586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba329f059f4d0f64dada538ad4f73570, type: 3}
+  m_Script: {fileID: 11500000, guid: 2010fa862ac351a419d04282bd35bd60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6963629756286338279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4036575128489482586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf1a4b9977257c4c84a869dcecdc070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
@@ -114,8 +154,23 @@ MonoBehaviour:
     EXP: 0
     defaultEXP: 100
     expMultiplier: 1.1
-    currentHealth: 0
-    currentStamina: 0
+    currentHealth: 100
+    currentStamina: 40
     defaultHealth: 100
     defaultStamina: 40
+    defaultDamage: 10
     multiplier: 1.1
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4036575128489482586}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

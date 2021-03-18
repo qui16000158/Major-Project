@@ -19,6 +19,8 @@ public class Stats
     public float defaultHealth = 100.0f;
     public float defaultStamina = 40.0f;
 
+    public float defaultDamage = 10.0f;
+
     public float multiplier = 1.1f; // Exponent for growth based on level
 
     public float MaxHealth
@@ -35,6 +37,14 @@ public class Stats
         get
         {
             return defaultStamina * Mathf.Pow(multiplier, level);
+        }
+    }
+
+    public float GetDamage
+    {
+        get
+        {
+            return defaultDamage * Mathf.Pow(multiplier, level);
         }
     }
 
