@@ -30,6 +30,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     TMP_Text enemyStamina;
 
+    [SerializeField]
+    TMP_Text playerLevel;
+    [SerializeField]
+    TMP_Text enemyLevel;
+
     public enum ActionType
     {
         Attack,
@@ -46,6 +51,10 @@ public class BattleManager : MonoBehaviour
         // Ensure the enemy's health and stamina re full when the battle starts
         enemy.stats.currentHealth = enemy.stats.MaxHealth;
         enemy.stats.currentStamina = enemy.stats.MaxStamina;
+
+        // Display player and enemy levels
+        playerLevel.text = "Level: " + player.stats.level;
+        enemyLevel.text = "Level: " + enemy.stats.level;
 
         UpdateDisplay();
     }

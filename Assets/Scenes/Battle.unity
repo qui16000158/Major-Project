@@ -1493,6 +1493,8 @@ MonoBehaviour:
   enemyHealth: {fileID: 207434393}
   playerStamina: {fileID: 1069749805}
   enemyStamina: {fileID: 2117944819}
+  playerLevel: {fileID: 599192716}
+  enemyLevel: {fileID: 29561017}
 --- !u!4 &1340967288
 Transform:
   m_ObjectHideFlags: 0
