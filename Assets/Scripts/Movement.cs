@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rb.velocity = Vector2.zero; // Stops character from sliding
+
+        // Disallow movement whilst the battle scene is active
+        if (BattleSceneLoader.isLoaded) return;
+
         bool walking = false;
 
         // The absolute value disregards signs, meaning that negative values can also

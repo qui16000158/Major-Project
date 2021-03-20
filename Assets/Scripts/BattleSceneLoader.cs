@@ -5,24 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class BattleSceneLoader : MonoBehaviour
 {
-    public static bool isLoading = false;
+    public static bool isLoaded = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player" && !isLoading)
+        if (collision.tag == "Player" && !isLoaded)
         {
-            isLoading = true;
+            isLoaded = true;
             AsyncOperation loaded = SceneManager.LoadSceneAsync("Battle", LoadSceneMode.Additive);
 
-            loaded.completed += (operation) => {
+            loaded.completed += (operation) =>
+            {
 
                 GameObject[] toPause = FindObjectsOfType<GameObject>();
 
                 // Make all game objects from the previous scene inactive
-                foreach(GameObject pause in toPause)
+                foreach (GameObject pause in toPause)
                 {
                     if (pause.scene == gameObject.scene)
                     {
+                        // Ensure that the map/player isn't paused (Causes issues with trigger detection)
+                        if (pause.tag == "Map" || pause.tag == "Player") continue;
                         pause.SetActive(false);
                     }
                 }

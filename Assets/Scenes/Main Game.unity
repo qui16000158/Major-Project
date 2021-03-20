@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 113188457}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 143200517}
   m_Layer: 0
   m_Name: Ice Area
-  m_TagString: MainCamera
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 144120593}
   m_Layer: 0
   m_Name: Collision-Top
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 250178646}
   m_Layer: 0
   m_Name: Water Area
-  m_TagString: MainCamera
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Spawn Area
-  m_TagString: MainCamera
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 668412396}
   m_Layer: 0
   m_Name: Cameras
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1434,7 +1434,7 @@ GameObject:
   - component: {fileID: 739771693}
   m_Layer: 0
   m_Name: Areas
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1625,7 +1625,7 @@ GameObject:
   - component: {fileID: 1118075366}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4097,7 +4097,7 @@ GameObject:
   - component: {fileID: 1119871454}
   m_Layer: 0
   m_Name: Ice Area
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4427,7 +4427,7 @@ GameObject:
   - component: {fileID: 1342467089}
   m_Layer: 0
   m_Name: Collision-Bottom
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6316,7 +6316,7 @@ GameObject:
   - component: {fileID: 1708762055}
   m_Layer: 0
   m_Name: Lava Area
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6472,7 +6472,7 @@ GameObject:
   - component: {fileID: 1852630606}
   m_Layer: 0
   m_Name: Lava Area
-  m_TagString: MainCamera
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6555,7 +6555,7 @@ GameObject:
   - component: {fileID: 1928075758}
   m_Layer: 0
   m_Name: Forest Area
-  m_TagString: MainCamera
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6638,7 +6638,7 @@ GameObject:
   - component: {fileID: 1976718669}
   m_Layer: 0
   m_Name: Spawn Area
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6857,7 +6857,7 @@ GameObject:
   - component: {fileID: 2028522053}
   m_Layer: 0
   m_Name: Forest Area
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7057,7 +7057,7 @@ GameObject:
   - component: {fileID: 2063884556}
   m_Layer: 0
   m_Name: Below-Ground
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12342,7 +12342,7 @@ GameObject:
   - component: {fileID: 2118037564}
   m_Layer: 0
   m_Name: Water Area
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12492,10 +12492,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1210360468, guid: cf825c301ab73124ab958cf47c725724, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7935700435200795969, guid: cf825c301ab73124ab958cf47c725724,
         type: 3}
       propertyPath: m_LocalPosition.x

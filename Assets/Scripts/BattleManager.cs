@@ -228,7 +228,7 @@ public class BattleManager : MonoBehaviour
 
         loading.completed += (operation) =>
         {
-            BattleSceneLoader.isLoading = false;
+            BattleSceneLoader.isLoaded = false;
         };
     }
 }

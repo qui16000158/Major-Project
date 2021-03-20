@@ -34,7 +34,7 @@ public class AreaManager : MonoBehaviour
     // Invokes an event when the player exits the area
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Player" && !BattleSceneLoader.isLoading)
+        if(other.tag == "Player" && !BattleSceneLoader.isLoaded)
         {
             onPlayerExit.Invoke();
         }
