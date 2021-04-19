@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class PDataManager : MonoBehaviour
 {
-    public static PDataManager instance;
+    static PData currentData = null;
 
     public string FilePath
     {
@@ -18,14 +18,17 @@ public class PDataManager : MonoBehaviour
 
     public string fileName = "pdata.bin";
 
-    // Awake is called before Start
-    void Awake()
+    // This will clear the player's data
+    public void Clear()
     {
-        instance = this;
+        if (File.Exists(FilePath))
+        {
+            File.Delete(FilePath);
+        }
     }
 
     // This will load a player's data from disk, and return it
-    public PData Load()
+    public void Load()
     {
         if (File.Exists(FilePath))
         {
@@ -34,23 +37,37 @@ public class PDataManager : MonoBehaviour
             BinaryFormatter bin = new BinaryFormatter();
             // The binary formatter stores objects as bits, and therefore
             // must be explicitly casted back to the correct object
-            return (PData)bin.Deserialize(stream);
+            try
+            {
+                currentData = (PData)bin.Deserialize(stream);
+            }
+            catch
+            {
+                Debug.Log("PDATA: Failed to load data (Not necessarily an issue)");
+                currentData = new PData(); // Load failsafe data
+            }
         }
         else
         {
-            return new PData();
+            currentData = new PData();
         }
+
+        PlayerLevelManager.instance.stats = currentData.stats; // Load the player's stats from the PData object
     }
 
     // This will take a player's data, and save it to disk
-    public void Save(PData toSave)
+    public void Save()
     {
+        currentData = new PData();
+
+        currentData.stats = PlayerLevelManager.instance.stats;
+
         FileStream stream = new FileStream(FilePath, FileMode.Create);
 
         BinaryFormatter bin = new BinaryFormatter();
         // This will convert our object into binary data
         // and allow it to be written to a file
-        bin.Serialize(stream, toSave);
+        bin.Serialize(stream, currentData);
         stream.Close();
     }
 }

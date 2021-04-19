@@ -60,7 +60,7 @@ public class Stats
     public void LevelUp()
     {
         // Check if the object is able to level up
-        if(EXP > LevelFromEXP)
+        if(EXP >= LevelFromEXP)
         {
             // Increase the object's level
             level++;

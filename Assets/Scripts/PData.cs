@@ -6,19 +6,5 @@ using UnityEngine;
 [System.Serializable]
 public class PData
 {
-    public Stats stats;
-
-    public float posX, posY, posZ;
-    public Vector3 Position {
-        get
-        {
-            return new Vector3(posX, posY, posZ);
-        }
-        set
-        {
-            posX = value.x;
-            posY = value.y;
-            posZ = value.z;
-        }
-    }
+    public Stats stats = new Stats();
 }
