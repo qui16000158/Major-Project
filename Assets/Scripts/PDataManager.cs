@@ -52,7 +52,9 @@ public class PDataManager : MonoBehaviour
             currentData = new PData();
         }
 
-        PlayerLevelManager.instance.stats = currentData.stats; // Load the player's stats from the PData object
+        // Load the player's stats from the PData object
+        PlayerLevelManager.instance.stats = currentData.stats; 
+        PlayerLevelManager.playerStats = currentData.stats; // This allows the stats to persist when the player leaves the scene
     }
 
     // This will take a player's data, and save it to disk

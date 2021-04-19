@@ -57,6 +57,11 @@ public class Stats
         }
     }
 
+    public void AddEXP(int amount)
+    {
+        EXP += amount;
+    }
+
     public void LevelUp()
     {
         // Check if the object is able to level up
@@ -64,8 +69,8 @@ public class Stats
         {
             // Increase the object's level
             level++;
-            // Reset the object's EXP
-            EXP = 0;
+            // Remove the required EXP from the object's EXP
+            EXP -= LevelFromEXP;
 
             // Increase the current stats to their new max value
             Initialize();

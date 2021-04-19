@@ -166,7 +166,7 @@ public class BattleManager : MonoBehaviour
             enemy.onDeath.Invoke();
         }
 
-        battleText.text = "Player dealt " + damage + " damage to Enemy";
+        battleText.text = "Player dealt " + Mathf.FloorToInt(damage) + " damage to Enemy";
     }
 
     void EnemyAttack()
@@ -188,16 +188,18 @@ public class BattleManager : MonoBehaviour
             player.onDeath.Invoke(); // Run the player's death event
         }
 
-        battleText.text = "Enemy dealt " + damage + " damage to Player";
+        battleText.text = "Enemy dealt " + Mathf.FloorToInt(damage) + " damage to Player";
     }
 
     public void UpdateDisplay()
     {
-        playerHealth.text = "Health: " + player.stats.currentHealth;
-        enemyHealth.text = "Health: " + enemy.stats.currentHealth;
+        // This will update the in-scene text display, floor to int prevents floating point precision errors from appearing
 
-        playerStamina.text = "Stamina: " + player.stats.currentStamina;
-        enemyStamina.text = "Stamina: " + enemy.stats.currentStamina;
+        playerHealth.text = "Health: " + Mathf.FloorToInt(player.stats.currentHealth);
+        enemyHealth.text = "Health: " + Mathf.FloorToInt(enemy.stats.currentHealth);
+
+        playerStamina.text = "Stamina: " + Mathf.FloorToInt(player.stats.currentStamina);
+        enemyStamina.text = "Stamina: " + Mathf.FloorToInt(enemy.stats.currentStamina);
     }
 
     // Workaround for UnityEvents
