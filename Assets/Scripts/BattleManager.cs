@@ -169,7 +169,7 @@ public class BattleManager : MonoBehaviour
         battleText.text = "Player dealt " + Mathf.FloorToInt(damage) + " damage to Enemy";
     }
 
-    void EnemyAttack()
+    public void EnemyAttack()
     {
         enemy.stats.currentStamina -= 10.0f;
 
@@ -220,11 +220,15 @@ public class BattleManager : MonoBehaviour
 
     public void OnBattleEnded()
     {
+        if (paused == null) return; // The game is only "paused" whilst a battle is ongoing, therefore a battle will not need to end if one is not running
+
         // Unpause all game objects from the old scene
         foreach(GameObject unpause in paused)
         {
             unpause.SetActive(true);
         }
+
+        paused = null; // Clean up
 
         AsyncOperation loading = SceneManager.UnloadSceneAsync(gameObject.scene); // Unload the battle scene
 
