@@ -18,12 +18,12 @@ public class DisplayStats : MonoBehaviour
         // Level Display
         currentText += "Level: " + stats.level + "\n";
 
+        // Mathf.FloorToInt is used to negate the effects of floating point precision loss
+
         // EXP Display
-        currentText += "EXP: " + stats.EXP + "/" + stats.LevelFromEXP + "\n";
+        currentText += "EXP: " + Mathf.FloorToInt(stats.EXP) + "/" + Mathf.FloorToInt(stats.LevelFromEXP) + "\n";
 
         currentText += "\n"; // Separate level/exp from health/stamina
-
-        // Mathf.FloorToInt is used to negate the effects of floating point precision loss
 
         // Health display
         currentText += "Health: " + Mathf.FloorToInt(stats.MaxHealth) + "\n";
