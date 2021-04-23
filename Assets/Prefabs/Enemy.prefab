@@ -17,9 +17,8 @@ GameObject:
   - component: {fileID: 3380516051852003157}
   - component: {fileID: 1808931473039400417}
   - component: {fileID: 8319552232211057524}
-  - component: {fileID: 2441847097416133132}
   - component: {fileID: 8554687856129718648}
-  - component: {fileID: 891236042026744107}
+  - component: {fileID: 7868347238214007919}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -162,7 +161,7 @@ MonoBehaviour:
     EXP: 0
     defaultEXP: 100
     expMultiplier: 1.1
-    currentHealth: 100
+    currentHealth: 12
     currentStamina: 40
     defaultHealth: 100
     defaultStamina: 40
@@ -171,17 +170,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 891236042026744107}
-        m_MethodName: DoFinishingMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 4036575128489482586}
         m_MethodName: SetActive
         m_Mode: 6
@@ -258,32 +246,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &2441847097416133132
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4036575128489482586}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0666667, y: 0.93333334}
-    newSize: {x: 1.0666667, y: 0.93333334}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.9}
-  m_EdgeRadius: 0
 --- !u!114 &8554687856129718648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,18 +258,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb5f4ee5816b434da67c6f473b25948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &891236042026744107
-MonoBehaviour:
+--- !u!58 &7868347238214007919
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4036575128489482586}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f051e9f2560ff944489be89fb17669ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45
 --- !u!1 &4790041668821927942
 GameObject:
   m_ObjectHideFlags: 0

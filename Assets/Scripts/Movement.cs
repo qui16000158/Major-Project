@@ -34,14 +34,14 @@ public class Movement : MonoBehaviour
 
         // The absolute value disregards signs, meaning that negative values can also
         // appear greater than 0.1
-        if (Mathf.Abs(input.GetHorizontal()) > 0.1f)
-        {
-            rb.velocity = transform.right * movementSpeed * (input.GetHorizontal() > 0 ? 1 : -1);
-            walking = true;
-        }
-        else if(Mathf.Abs(input.GetVertical()) > 0.1f)
+        if (Mathf.Abs(input.GetVertical()) > 0.1f)
         {
             rb.velocity = transform.up * movementSpeed * (input.GetVertical() > 0 ? 1 : -1);
+            walking = true;
+        }
+        else if (Mathf.Abs(input.GetHorizontal()) > 0.1f)
+        {
+            rb.velocity = transform.right * movementSpeed * (input.GetHorizontal() > 0 ? 1 : -1);
             walking = true;
         }
         // If the player isn't moving then we zero out their velocity

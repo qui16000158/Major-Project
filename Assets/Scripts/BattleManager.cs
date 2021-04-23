@@ -13,6 +13,7 @@ public class BattleManager : MonoBehaviour
     public EnemyLevelManager enemy;
 
     bool isWaiting = false;
+    bool battleOver = false;
 
     bool playerDefending;
     bool enemyDefending;
@@ -61,6 +62,8 @@ public class BattleManager : MonoBehaviour
 
     public void DoAction(ActionType action)
     {
+        if (battleOver) return; // Don't allow the player to attack when the battle is over
+
         if (isWaiting) return; // Do not allow actions whilst waiting
 
         playerDefending = false;
@@ -72,6 +75,10 @@ public class BattleManager : MonoBehaviour
                 if (player.stats.currentStamina >= 10.0f)
                 {
                     PlayerAttack();
+                }
+                else
+                {
+                    battleText.text = "Player is too tired to attack!";
                 }
 
                 break;
@@ -96,6 +103,8 @@ public class BattleManager : MonoBehaviour
     // When the enemy gets to take their turn
     public void EnemyTurn()
     {
+        if (battleOver) return; // Don't allow the enemy to continue once the battle has ended
+
         enemyDefending = false;
 
         if (player.stats.currentHealth - enemy.stats.GetDamage <= 0.0f && enemy.stats.currentStamina >= 10.0f)
@@ -160,16 +169,28 @@ public class BattleManager : MonoBehaviour
         enemy.stats.currentHealth -= damage;
 
         // Check if the enemy has died
-        if (enemy.stats.currentHealth <= 0.0f)
+        if ((int)enemy.stats.currentHealth <= 0)
         {
-            OnBattleEnded();
-            enemy.onDeath.Invoke();
-        }
+            EnemyAttack(true); // Perform the enemy's finishing move
 
-        battleText.text = "Player dealt " + Mathf.FloorToInt(damage) + " damage to Enemy";
+            if((int)player.stats.currentHealth <= 0)
+            {
+                battleText.text = "Enemy has killed the Player with their finishing move!";
+                StartCoroutine(EndBattle(player)); // End the battle and kill the player
+            }
+            else
+            {
+                battleText.text = "Player has killed the Enemy!";
+                StartCoroutine(EndBattle(enemy)); // End the battle
+            }
+        }
+        else
+        {
+            battleText.text = "Player dealt " + Mathf.FloorToInt(damage) + " damage to Enemy";
+        }
     }
 
-    public void EnemyAttack()
+    public void EnemyAttack(bool isFinishingMove = false)
     {
         enemy.stats.currentStamina -= 10.0f;
 
@@ -181,14 +202,21 @@ public class BattleManager : MonoBehaviour
 
         player.stats.currentHealth -= damage;
 
-        // Check if the player has died
-        if (player.stats.currentHealth <= 0.0f)
+        // Do not check if the player is dead when performing a finishing move
+        if (!isFinishingMove)
         {
-            OnBattleEnded();
-            player.onDeath.Invoke(); // Run the player's death event
-        }
 
-        battleText.text = "Enemy dealt " + Mathf.FloorToInt(damage) + " damage to Player";
+            // Check if the player has died
+            if ((int)player.stats.currentHealth <= 0)
+            {
+                battleText.text = "Enemy has killed the Player!";
+                StartCoroutine(EndBattle(player)); // End the battle and kill the player
+            }
+            else
+            {
+                battleText.text = "Enemy dealt " + Mathf.FloorToInt(damage) + " damage to Player";
+            }
+        }
     }
 
     public void UpdateDisplay()
@@ -218,7 +246,17 @@ public class BattleManager : MonoBehaviour
         isWaiting = false;
     }
 
-    public void OnBattleEnded()
+    // This will end the battle after 5 seconds, to give player's an opportunity to see how the battle ended.
+    IEnumerator EndBattle(LevelManager loser)
+    {
+        isWaiting = true; // Stop any furthur moves from taking place
+        battleOver = true;
+        yield return new WaitForSeconds(5);
+
+        OnBattleEnded(loser);
+    }
+
+    public void OnBattleEnded(LevelManager loser)
     {
         if (paused == null) return; // The game is only "paused" whilst a battle is ongoing, therefore a battle will not need to end if one is not running
 
@@ -227,6 +265,8 @@ public class BattleManager : MonoBehaviour
         {
             unpause.SetActive(true);
         }
+
+        loser.onDeath.Invoke(); // Kill the loser
 
         paused = null; // Clean up
 

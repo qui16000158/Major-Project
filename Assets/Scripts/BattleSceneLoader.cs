@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BattleSceneLoader : MonoBehaviour
 {
+
     public static bool isLoaded = false;
 
     void OnTriggerEnter2D(Collider2D collision)
