@@ -268,6 +268,8 @@ public class BattleManager : MonoBehaviour
     // This will end the battle after 5 seconds, to give player's an opportunity to see how the battle ended.
     IEnumerator EndBattle(LevelManager loser)
     {
+        ButtonVisibility(false); // Disable buttons when the game is over
+
         isWaiting = true; // Stop any furthur moves from taking place
         battleOver = true;
         yield return new WaitForSeconds(5);
