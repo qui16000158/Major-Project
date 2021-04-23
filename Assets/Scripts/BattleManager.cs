@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
+// QUI16000158 | James Quinney
 public class BattleManager : MonoBehaviour
 {
     // A list of all gameobjects paused for the battle
@@ -135,9 +136,10 @@ public class BattleManager : MonoBehaviour
 
             if (canAttack)
             {
-                int rand = Random.Range(0, 2);
+                int rand = Random.Range(1, 101); // Generate a random number from 1->100
 
-                if(rand == 1)
+                // The enemy has an 80% chance to attack, and a 20% chance to defend
+                if(rand <= 80)
                 {
                     EnemyAttack();
                 }

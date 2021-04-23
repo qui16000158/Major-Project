@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// QUI16000158 | James Quinney
 // This will allow the class to be stored using PData
 [System.Serializable]
 public class Stats

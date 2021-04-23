@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// QUI16000158 | James Quinney
 public class AreaManager : MonoBehaviour
 {
     // Events for when the player enters/exits the area
