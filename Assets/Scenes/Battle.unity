@@ -1480,6 +1480,10 @@ MonoBehaviour:
   paused: []
   player: {fileID: 0}
   enemy: {fileID: 0}
+  actionButtons:
+  - {fileID: 1900971464}
+  - {fileID: 849674220}
+  - {fileID: 2004215375}
   battleText: {fileID: 1705343361}
   playerHealth: {fileID: 1046678844}
   enemyHealth: {fileID: 207434393}

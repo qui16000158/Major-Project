@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class BattleManager : MonoBehaviour
 
     bool playerDefending;
     bool enemyDefending;
+
+    [SerializeField]
+    Button[] actionButtons; // The player's action buttons, to be disabled when the player cannot perform an action
 
     [SerializeField]
     TMP_Text battleText; // Announcer text that explains the most recent move
@@ -41,6 +45,14 @@ public class BattleManager : MonoBehaviour
         Attack,
         Defend,
         Wait
+    }
+
+    void ButtonVisibility(bool isVisible)
+    {
+        foreach(Button button in actionButtons)
+        {
+            button.interactable = isVisible;
+        }
     }
 
     public void InitializeBattle()
@@ -96,6 +108,8 @@ public class BattleManager : MonoBehaviour
         player.stats.currentStamina = Mathf.Min(player.stats.currentStamina + 5.0f, player.stats.MaxStamina);
 
         UpdateDisplay();
+
+        ButtonVisibility(false); // Disable the player's buttons
 
         StartCoroutine(WaitForEnemyTurn());
     }
@@ -153,6 +167,8 @@ public class BattleManager : MonoBehaviour
         enemy.stats.currentStamina = Mathf.Min(enemy.stats.currentStamina + 5.0f, enemy.stats.MaxStamina);
 
         UpdateDisplay();
+
+        ButtonVisibility(true); // Re-enable the player's buttons
     }
 
     void PlayerAttack()
@@ -222,12 +238,13 @@ public class BattleManager : MonoBehaviour
     public void UpdateDisplay()
     {
         // This will update the in-scene text display, floor to int prevents floating point precision errors from appearing
+        // Mathf.Max is used to ensure that health is never displayed below 0
 
-        playerHealth.text = "Health: " + Mathf.FloorToInt(player.stats.currentHealth);
-        enemyHealth.text = "Health: " + Mathf.FloorToInt(enemy.stats.currentHealth);
+        playerHealth.text = "Health: " + Mathf.Max((int)player.stats.currentHealth, 0);
+        enemyHealth.text = "Health: " + Mathf.Max((int)enemy.stats.currentHealth, 0);
 
-        playerStamina.text = "Stamina: " + Mathf.FloorToInt(player.stats.currentStamina);
-        enemyStamina.text = "Stamina: " + Mathf.FloorToInt(enemy.stats.currentStamina);
+        playerStamina.text = "Stamina: " + (int)player.stats.currentStamina;
+        enemyStamina.text = "Stamina: " + (int)enemy.stats.currentStamina;
     }
 
     // Workaround for UnityEvents
