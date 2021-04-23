@@ -22,4 +22,9 @@ public class PlayerLevelManager : LevelManager
         }
         instance = this; // This will make the player's level manager easily accessible for enemies
     }
+
+    public void ResetStats()
+    {
+        playerStats = new Stats();
+    }
 }

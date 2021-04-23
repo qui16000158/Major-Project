@@ -68,10 +68,11 @@ public class Stats
         // Check if the object is able to level up
         if(EXP >= LevelFromEXP)
         {
-            // Increase the object's level
-            level++;
             // Remove the required EXP from the object's EXP
             EXP -= LevelFromEXP;
+
+            // Increase the object's level
+            level++;
 
             // Increase the current stats to their new max value
             Initialize();
